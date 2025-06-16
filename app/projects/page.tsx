@@ -2,7 +2,7 @@ import Article from "@/components/layouts/article";
 import Link from "next/link";
 
 export default function Projects() {
-  const githubProfileBaseUrl = "https://githib.com/njayman";
+  const githubProfileBaseUrl = "https://github.com/njayman";
 
   return (
     <Article>
