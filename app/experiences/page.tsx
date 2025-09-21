@@ -16,17 +16,17 @@ export default function Experiences() {
         </h2>
         <span>Software Engineer</span>
         <br />
-        <span>2023 - Present</span>
+        <span>2023 - 2025</span>
         <ul className="list-disc ml-10">
+          <li>Front end development with react, Typescript.</li>
           <li>
-            Front end development with react, typescript and related libraries
-            like bootstrap, react router, react-redux etc.
+            Internal libraries, web components, and module development from
+            scratch including storybooks and unit tests using react, typescript
+            and vanilla js. (DateTimePicker, Localization Context, Data Table,
+            Event-driven reactive modules, etc.).
           </li>
-          <li>
-            Development and maintainance of internal library which includes
-            react components, utils, widgets and plugins, web-component with
-            react etc.
-          </li>
+          <li>Code review and Code refactoring.</li>
+          <li>Training and mentoring new recruits.</li>
         </ul>
       </section>
       <section className="pt-3">

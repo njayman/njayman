@@ -1,5 +1,7 @@
 import Article from "@/components/layouts/article";
 import { getMyWorkingExperience } from "@/utils";
+import Link from "next/link";
+import { Github, Globe, Linkedin } from "lucide-react";
 
 export default function Home() {
   return (
@@ -22,6 +24,27 @@ export default function Home() {
         </li>
         <li>Server configuration for deploying web applications.</li>
       </ul>
+      <section className="pt-3 w-full">
+        <div className="flex flex-row justify-center">
+          <Link href="https://njayman.com" className="m-2" target="_blank">
+            <Globe />
+          </Link>
+          <Link
+            href="https://github.com/njayman"
+            className="m-2"
+            target="_blank"
+          >
+            <Github />
+          </Link>
+          <Link
+            href="https://linkedin.com/in/najishmahmud"
+            className="m-2"
+            target="_blank"
+          >
+            <Linkedin />
+          </Link>
+        </div>
+      </section>
     </Article>
   );
 }
