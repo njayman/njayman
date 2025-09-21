@@ -14,12 +14,6 @@ const Navbar = () => {
     );
   };
 
-  const liclassnames = (href: string) => {
-    return clsx(
-      "m-2 transition-all duration-300 ease-in-out hover:bg-gray-50 rounded p-2 hover:text-emerald-400",
-      { border: isActive(href) },
-    );
-  };
   const routes = [
     { href: "/", icon: <HomeIcon /> },
     { href: "/projects", icon: <Code /> },
@@ -32,11 +26,19 @@ const Navbar = () => {
     <nav className="flex justify-center m-3">
       <ul className="flex flex-row flex-nowrap mx-auto">
         {routes.map((route, idx) => (
-          <Link href={route.href} key={idx}>
-            <li key={idx} className={liclassnames(route.href)}>
+          <li key={idx} className="m-2">
+            <Link
+              href={route.href}
+              className={clsx(
+                "flex h-12 w-12 items-center justify-center rounded transition-all duration-300 ease-in-out hover:bg-gray-50 hover:text-emerald-400",
+                {
+                  "border-2 border-emerald-400": isActive(route.href),
+                },
+              )}
+            >
               {route.icon}
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </nav>
