@@ -95,6 +95,30 @@ const HERO_LINKS = [
 	},
 ];
 
+export function getSectionText(id: SectionId): string {
+	switch (id) {
+		case SectionId.Hero:
+			return "Najish Mahmud — Fullstack Developer. Portfolio site at njayman.com. GitHub at github.com/njayman. LinkedIn at linkedin.com/in/najishmahmud.";
+		case SectionId.About:
+			return "Full-stack TypeScript engineer with 5+ years building production web applications across React, Next.js, Express, NestJS and TypeScript. Experienced in delivering end-to-end features including AI inference visualization, open banking integrations, and complex UI systems. Currently completing an MS in Artificial Intelligence at the University of Bedfordshire.";
+		case SectionId.Skills:
+			return `Skills: Languages: TypeScript, JavaScript, Python. Frontend: React, Next.js, Zustand, Redux Toolkit, TanStack Query, TanStack Table, Tailwind CSS, ShadCN UI, Framer Motion, Socket.io, Storybook. Backend: NestJS, Node.js, Express, FastAPI, Django, PayloadCMS. Databases: PostgreSQL, Redis, BullMQ, Linode Object Storage. DevOps: Docker, Docker Compose, Linux, Nginx, CI/CD Pipelines. Other: TypeORM, Zod, React Hook Form, Web Components, Vanilla JS, OWL.`;
+		case SectionId.Experience:
+			return `Experience:
+- Malda Limited, London, UK — Fullstack TypeScript Developer (Nov 2025 – May 2026). Built full-stack Next.js/NestJS property management platform for UK landlords. Built Finance page with AI-powered reconciliation UI for rent charge management. Implemented Atto open banking integration (OAuth, account linking, transaction sync). Revamped dynamic form builder for 30+ AI-extracted document types. 
+- Therap (BD) Ltd, Dhaka, Bangladesh — Software Engineer (Jun 2023 – Aug 2025). Led development of internal React/TypeScript UI component library. Built web components with complex API ecosystems. Integrated legacy jQuery widgets into React. Mentored new recruits.
+- Mir Info Systems Limited, Dhaka, Bangladesh — Software Engineer (Mar 2022 – May 2023). Built data-heavy React/Next.js frontends with TanStack Query and Table. Developed custom Odoo modules. Built backend services with Node.js, FastAPI, Django. Trained and deployed Rasa chatbot. Managed Docker deployments.
+- Kernel International Ltd., Dhaka, Bangladesh — Fullstack Developer (Jan 2022 – Present). Maintain Medibee and NoticeBee post-launch. Built admin panel modules for Jacks Burger (UK restaurant chain) using Next.js and PayloadCMS.
+- Kernel International Ltd., Dhaka, Bangladesh — Fullstack Developer Intern (Dec 2019 – Jan 2022). Developed and deployed NoticeBee (Socket.io realtime notice platform, adopted by 100+ colleges). Built Medibee medical student subscription platform. Maintained production apps.`;
+		case SectionId.Education:
+			return "University of Bedfordshire, Luton, UK — MSc in Artificial Intelligence (Sep 2025 – Present). Islamic University of Technology, Dhaka, Bangladesh — BBA in Business and Technology Management (Jan 2018 – May 2022).";
+		case SectionId.Research:
+			return "Mahmud, N. and Chowdhury, T.A. (2024) 'Survival Prediction of Septic Patients Using Boosting and Oversampling Techniques', 2024 International Conference on Machine Learning and Cybernetics (ICMLC), pp. 71–76. doi:10.1109/icmlc63072.2024.10935134.";
+		case SectionId.Extracurricular:
+			return "General Member at JCI Dhaka West. Volunteered in organizing Battle of Brush 4.0 — art competition with thousands of young artists from 80+ schools. Volunteered in Project Vision — free eye treatment for bus drivers. Chess, Table Tennis, Badminton.";
+	}
+}
+
 export function renderSection(id: SectionId): ReactNode {
 	switch (id) {
 		case SectionId.Hero:

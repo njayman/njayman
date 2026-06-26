@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CommandInput from "./components/CommandInput";
 import ContactDialog from "./components/ContactDialog";
 import Navbar from "./components/Navbar";
@@ -6,16 +6,8 @@ import { renderSection, SectionId } from "./sections";
 
 export default function App() {
 	const [active, setActive] = useState<SectionId>(SectionId.Hero);
-	const [feedback, setFeedback] = useState<string | null>(null);
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const inputRef = useRef<HTMLInputElement | null>(null);
-	const feedbackTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
-
-	const showFeedback = useCallback((msg: string) => {
-		setFeedback(msg);
-		clearTimeout(feedbackTimer.current);
-		feedbackTimer.current = setTimeout(() => setFeedback(null), 2500);
-	}, []);
 
 	useEffect(() => {
 		function handleKey(e: Event) {
@@ -48,18 +40,6 @@ export default function App() {
 				onContact={() => setDialogOpen(true)}
 			/>
 
-			<div
-				aria-live="polite"
-				aria-atomic="true"
-				className={
-					feedback
-						? "bg-zinc-800 text-zinc-300 text-xs text-center py-1"
-						: "sr-only"
-				}
-			>
-				{feedback ?? ""}
-			</div>
-
 			<main id="main-content" className="flex-1 scrollable" tabIndex={-1}>
 				<div
 					className="min-h-full flex items-center justify-center p-4 sm:p-8 md:p-12"
@@ -73,7 +53,6 @@ export default function App() {
 			<CommandInput
 				onCommand={setActive}
 				onContact={() => setDialogOpen(true)}
-				onInvalid={showFeedback}
 				onFocusInput={(el) => {
 					inputRef.current = el;
 				}}
