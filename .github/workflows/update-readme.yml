@@ -1,0 +1,42 @@
+name: Update README
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - ".github/workflows/update-readme.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Generate stats card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=dark&hide_border=true
+          path: profile/stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate top languages card
+        uses: stats-organization/github-readme-stats-action@v2
+        with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&layout=compact&theme=dark&hide_border=true
+          path: profile/top-langs.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: bun run scripts/generate-readme.ts
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: auto-update README"
+          file_pattern: README.md profile/*.svg
