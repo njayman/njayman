@@ -165,14 +165,22 @@ export const PROJECTS: Project[] = [
 		url: "https://github.com/njayman/raylibgame",
 	},
 	{
-		name: "NoticeBee",
+		name: "noticable",
 		description:
-			"Realtime notice platform built with Socket.io and React — admin dashboard, kiosk display, multipart upload, layout management. Adopted by 100+ government colleges under CEDP.",
+			"Fork and rebuild of NoticeBee — realtime notice platform built with Socket.io and React — admin dashboard, kiosk display, multipart upload, layout management. Adopted by 100+ government colleges under CEDP.",
+		url: "https://codeberg.org/njayman/noticable",
 	},
 	{
-		name: "Medibee",
+		name: "medible",
 		description:
-			"MERN stack subscription platform serving curated medical video content via Vimeo. Admin panel, student dashboards, and 1,000+ active subscribers.",
+			"Fork and rebuild of Medibee — MERN stack subscription platform serving curated medical video content via Vimeo. Admin panel, student dashboards, and 1,000+ active subscribers.",
+		url: "https://codeberg.org/njayman/medible",
+	},
+	{
+		name: "brain.md Skills",
+		description:
+			"Agent Skill/MCP plugin that teaches AI coding agents (Claude Code, Cursor, VS Code Copilot) to connect to and use brain.md, a local-first Markdown knowledge vault — auth, search, and note read/write across 16+ tools.",
+		url: "https://github.com/njayman/brainmd-skills",
 	},
 ];
 
