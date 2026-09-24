@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from "node:fs";
+import { PROJECTS } from "../src/data/profile";
 
 const SKILL_CATEGORIES: Record<string, string[]> = {
 	Languages: ["TypeScript", "JavaScript", "Python", "Go"],
@@ -12,18 +13,10 @@ const SKILL_CATEGORIES: Record<string, string[]> = {
 	Backend: ["NestJS", "Node.js", "Express", "Go", "FastAPI", "Django", "PayloadCMS"],
 	Databases: ["PostgreSQL", "Redis", "BullMQ"],
 	DevOps: ["Docker", "Linux", "Nginx", "CI/CD", "Coolify"],
-	Cloud: ["Azure", "AWS"],
+	Cloud: ["AWS"],
 	Testing: ["Jest", "React Testing Library"],
 };
 
-const REPO_OWNER = "njayman";
-
-const PROJECTS: { name: string; desc: string; url?: string }[] = [
-	{ name: "proz", desc: "Cross-platform CLI + TUI project launcher built with Go, Bubbletea and Cobra. Fuzzy-find and jump between projects from any terminal.", url: `https://github.com/${REPO_OWNER}/proz` },
-	{ name: "raylibgame", desc: "2D boss-fight game built with Go and raylib — state-machine AI, collision detection, HUD, and health-bar systems.", url: `https://github.com/${REPO_OWNER}/raylibgame` },
-	{ name: "NoticeBee", desc: "Realtime notice platform built with Socket.io and React — admin dashboard, kiosk display, multipart upload, layout management. Adopted by 100+ government colleges under CEDP." },
-	{ name: "Medibee", desc: "MERN stack subscription platform serving curated medical video content via Vimeo. Admin panel, student dashboards, and 1,000+ active subscribers." },
-];
 
 
 function generate(): string {
@@ -33,8 +26,8 @@ function generate(): string {
 
 	const projectBullets = PROJECTS
 		.map((p) => p.url
-			? `- [**${p.name}**](${p.url}) — ${p.desc}`
-			: `- **${p.name}** — ${p.desc}`)
+			? `- [**${p.name}**](${p.url}): ${p.description}`
+			: `- **${p.name}**: ${p.description}`)
 		.join("\n");
 
 	const lines = [

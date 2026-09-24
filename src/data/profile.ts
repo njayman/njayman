@@ -85,7 +85,7 @@ export const SKILL_CATEGORIES: Record<string, SkillCategory> = {
 	},
 	Cloud: {
 		color: "bg-sky-600/20 text-sky-300 border-sky-700/30",
-		skills: ["Azure", "AWS", "Coolify"],
+		skills: ["AWS", "Coolify"],
 	},
 	Other: {
 		color: "bg-pink-600/20 text-pink-300 border-pink-700/30",
@@ -142,7 +142,6 @@ export const EXPERIENCES: Experience[] = [
 		role: "Fullstack Developer (Freelance)",
 		dates: "Jan 2022 – Present",
 		bullets: [
-			"Architected and built NoticeBee from scratch — real-time notice platform using Socket.io and React with admin dashboard and kiosk display mode; v2 added offline/online status, multipart upload, layout management. Adopted by 100+ govt. colleges.",
 			"Built Jacks Burger (UK) admin panel with Next.js + PayloadCMS — customer management, coupons, table management, and branch-level inventory reporting.",
 			"Configured Jitsi WebRTC video infrastructure for Medibee's early platform, supporting live sessions for 20–30 concurrent users.",
 			"Managed client relationships end-to-end via Fiverr — gathered requirements, scoped solutions, and iterated to delivery across multiple projects.",
@@ -153,33 +152,45 @@ export const EXPERIENCES: Experience[] = [
 
 export const PROJECTS: Project[] = [
 	{
+		name: "orcchh",
+		description:
+			"Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines, cutting SLA violations 3.1x under bursty traffic.",
+		url: "https://codeberg.org/njayman/orcchh",
+	},
+	{
+		name: "nbkit",
+		description:
+			"Convert Jupyter notebooks (.ipynb) to Markdown or plain text, no kernel required. Zero-dependency TypeScript core library, an MCP server for AI agents, and a Next.js web app.",
+		url: "https://nbkit.njayman.com",
+	},
+	{
 		name: "proz",
 		description:
 			"Cross-platform CLI + TUI project launcher built with Go, Bubbletea and Cobra. Fuzzy-find and jump between projects from any terminal.",
 		url: "https://github.com/njayman/proz",
 	},
 	{
-		name: "raylibgame",
+		name: "Galaxy Impact",
 		description:
-			"2D boss-fight game built with Go and raylib — state-machine AI, collision detection, HUD, and health-bar systems.",
-		url: "https://github.com/njayman/raylibgame",
+			"Top-down bullet-heaven space shooter (C++, raylib, CMake): escalating enemy waves, skill-based leveling, shared-move-pool bosses, and a web build via Emscripten.",
+		url: "https://github.com/njayman/galaxyimpact",
 	},
 	{
 		name: "noticable",
 		description:
-			"Fork and rebuild of NoticeBee — realtime notice platform built with Socket.io and React — admin dashboard, kiosk display, multipart upload, layout management. Adopted by 100+ government colleges under CEDP.",
+			"My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintain; NoticeBee is adopted by 100+ govt. colleges under CEDP. Adds an admin dashboard and kiosk display mode, with v2 adding offline/online status, multipart uploads, and layout management.",
 		url: "https://codeberg.org/njayman/noticable",
 	},
 	{
 		name: "medible",
 		description:
-			"Fork and rebuild of Medibee — MERN stack subscription platform serving curated medical video content via Vimeo. Admin panel, student dashboards, and 1,000+ active subscribers.",
+			"My fork and rebuild of Medibee, Kernel International's medical student subscription platform (React/Vite/Express monorepo) that I maintain; Medibee has 1,000+ active subscribers.",
 		url: "https://codeberg.org/njayman/medible",
 	},
 	{
 		name: "brain.md Skills",
 		description:
-			"Agent Skill/MCP plugin that teaches AI coding agents (Claude Code, Cursor, VS Code Copilot) to connect to and use brain.md, a local-first Markdown knowledge vault — auth, search, and note read/write across 16+ tools.",
+			"Agent Skill/MCP plugin that teaches AI coding agents (Claude Code, Cursor, VS Code Copilot) to connect to and use brain.md, a local-first Markdown knowledge vault: auth, search, and note read/write across 16+ tools.",
 		url: "https://github.com/njayman/brainmd-skills",
 	},
 ];

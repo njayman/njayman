@@ -19,17 +19,20 @@
 | **Backend** | NestJS, Node.js, Express, Go, FastAPI, Django, PayloadCMS |
 | **Databases** | PostgreSQL, Redis, BullMQ |
 | **DevOps** | Docker, Linux, Nginx, CI/CD, Coolify |
-| **Cloud** | Azure, AWS |
+| **Cloud** | AWS |
 | **Testing** | Jest, React Testing Library |
 
 ---
 
 ## 📌 Featured Projects
 
-- [**proz**](https://github.com/njayman/proz) — Cross-platform CLI + TUI project launcher built with Go, Bubbletea and Cobra. Fuzzy-find and jump between projects from any terminal.
-- [**raylibgame**](https://github.com/njayman/raylibgame) — 2D boss-fight game built with Go and raylib — state-machine AI, collision detection, HUD, and health-bar systems.
-- **NoticeBee** — Realtime notice platform built with Socket.io and React — admin dashboard, kiosk display, multipart upload, layout management. Adopted by 100+ government colleges under CEDP.
-- **Medibee** — MERN stack subscription platform serving curated medical video content via Vimeo. Admin panel, student dashboards, and 1,000+ active subscribers.
+- [**orcchh**](https://codeberg.org/njayman/orcchh): Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines, cutting SLA violations 3.1x under bursty traffic.
+- [**nbkit**](https://nbkit.njayman.com): Convert Jupyter notebooks (.ipynb) to Markdown or plain text, no kernel required. Zero-dependency TypeScript core library, an MCP server for AI agents, and a Next.js web app.
+- [**proz**](https://github.com/njayman/proz): Cross-platform CLI + TUI project launcher built with Go, Bubbletea and Cobra. Fuzzy-find and jump between projects from any terminal.
+- [**Galaxy Impact**](https://github.com/njayman/galaxyimpact): Top-down bullet-heaven space shooter (C++, raylib, CMake): escalating enemy waves, skill-based leveling, shared-move-pool bosses, and a web build via Emscripten.
+- [**noticable**](https://codeberg.org/njayman/noticable): My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintain; NoticeBee is adopted by 100+ govt. colleges under CEDP. Adds an admin dashboard and kiosk display mode, with v2 adding offline/online status, multipart uploads, and layout management.
+- [**medible**](https://codeberg.org/njayman/medible): My fork and rebuild of Medibee, Kernel International's medical student subscription platform (React/Vite/Express monorepo) that I maintain; Medibee has 1,000+ active subscribers.
+- [**brain.md Skills**](https://github.com/njayman/brainmd-skills): Agent Skill/MCP plugin that teaches AI coding agents (Claude Code, Cursor, VS Code Copilot) to connect to and use brain.md, a local-first Markdown knowledge vault: auth, search, and note read/write across 16+ tools.
 
 ---
 
