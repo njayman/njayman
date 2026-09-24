@@ -1,4 +1,10 @@
-import { type FormEvent, type KeyboardEvent, useRef, useState } from "react";
+import {
+	type FormEvent,
+	type KeyboardEvent,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from "react";
 import type { SectionId } from "../sections";
 import { ALL_SECTIONS, SECTION_LABELS } from "../sections";
 
@@ -23,6 +29,9 @@ export default function CommandInput({
 	const [inputVal, setInputVal] = useState("");
 	const [highlighted, setHighlighted] = useState(0);
 	const ref = useRef<HTMLInputElement>(null);
+	const formRef = useRef<HTMLFormElement>(null);
+	const listRef = useRef<HTMLUListElement>(null);
+	const [dropUp, setDropUp] = useState(false);
 
 	const q = inputVal.trim().toLowerCase();
 	const matches = SUGGESTIONS.filter(
@@ -31,6 +40,15 @@ export default function CommandInput({
 	const filtered = matches.length > 0 ? matches : SUGGESTIONS;
 
 	const show = inputVal.length > 0;
+
+	// Drop down by default; flip up only if it overflows below and fits above.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: re-measure when the list height changes
+	useLayoutEffect(() => {
+		if (!show || !formRef.current || !listRef.current) return;
+		const form = formRef.current.getBoundingClientRect();
+		const needed = listRef.current.offsetHeight + 8;
+		setDropUp(needed > window.innerHeight - form.bottom && needed <= form.top);
+	}, [show, filtered.length]);
 
 	function select(val: string) {
 		setInputVal("");
@@ -68,6 +86,7 @@ export default function CommandInput({
 	return (
 		<search>
 			<form
+				ref={formRef}
 				onSubmit={handleSubmit}
 				className={
 					hero
@@ -100,8 +119,10 @@ export default function CommandInput({
 				/>
 				{show && (
 					<ul
+						ref={listRef}
 						className={
-							(hero ? "top-full mt-2 text-left z-10 " : "bottom-full mb-1 ") +
+							(dropUp ? "bottom-full mb-1 " : "top-full mt-2 ") +
+							"text-left z-10 " +
 							"absolute left-0 right-0 bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden shadow-xl shadow-black/40"
 						}
 					>

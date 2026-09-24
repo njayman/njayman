@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import Avatar from "./components/Avatar";
 import CommandInput from "./components/CommandInput";
 import ContactDialog from "./components/ContactDialog";
 import Navbar from "./components/Navbar";
@@ -66,6 +67,14 @@ export default function App() {
 			</main>
 
 			{!isHero && commandInput}
+
+			{!isHero && (
+				// Decorative duplicate of the hero avatar; mouse devices only, where the eyes can track.
+				<Avatar
+					alt=""
+					className="fixed bottom-16 left-4 h-24 pointer-events-none hidden lg:pointer-fine:block"
+				/>
+			)}
 
 			<ContactDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
 		</div>

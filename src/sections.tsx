@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Avatar from "./components/Avatar";
 import ExpCard from "./components/ExpCard";
 import SkillBubble from "./components/SkillBubble";
 import {
@@ -79,12 +80,9 @@ export function renderSection(id: SectionId): ReactNode {
 		case SectionId.Hero:
 			return (
 				<header className="text-center py-12">
-					<img
-						src="/avatar.png"
+					<Avatar
 						alt={`Cartoon avatar of ${NAME}`}
-						width={445}
-						height={680}
-						className="h-40 w-auto mx-auto mb-6 drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]"
+						className="relative h-40 mx-auto mb-6"
 					/>
 					<h1 className="text-4xl font-bold tracking-tight">{NAME}</h1>
 					<p className="text-zinc-500 mt-2 text-lg">{TITLE}</p>
@@ -107,7 +105,7 @@ export function renderSection(id: SectionId): ReactNode {
 						download
 						className="inline-block mt-6 px-4 py-2 text-sm rounded border border-zinc-700 text-zinc-300 hover:border-blue-400 hover:text-blue-400 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
 					>
-						Download CV (PDF)
+						Download my resume
 					</a>
 				</header>
 			);
