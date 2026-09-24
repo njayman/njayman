@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Matte palette: Tailwind -300 tints at half saturation, 90% brightness. All >= 8:1 on zinc-950. */
+@theme {
+	--color-matte-blue: #98aec8;
+	--color-matte-indigo: #9ca3c3;
+	--color-matte-teal: #85c4bb;
+	--color-matte-violet: #ada7c7;
+	--color-matte-amber: #d0bd81;
+	--color-matte-rose: #c59ca1;
+	--color-matte-emerald: #8cc3ad;
+	--color-matte-sky: #90b7c9;
+	--color-matte-pink: #c5a0b4;
+}
+
 html {
 	scroll-behavior: smooth;
 }
@@ -12,28 +25,9 @@ body {
 	height: 100vh;
 }
 
-@keyframes float {
-	0%,
-	100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(-6px);
-	}
-}
-
-@keyframes glow {
-	0%,
-	100% {
-		box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
-	}
-	50% {
-		box-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
-	}
-}
-
 .scrollable {
 	overflow-y: auto;
+	overflow-x: hidden; /* popped skill bubbles fly in from off-screen */
 	scrollbar-gutter: stable;
 }
 
@@ -54,13 +48,59 @@ body {
 	background: rgba(255, 255, 255, 0.15);
 }
 
-@keyframes fadeIn {
+/* Page transition effects. Everything here is opt-in to motion. */
+@media (prefers-reduced-motion: no-preference) {
+	/* Headings drop in letter by letter. */
+	.letter {
+		display: inline-block;
+		animation: letterIn 0.4s cubic-bezier(0.2, 1.5, 0.4, 1) backwards;
+	}
+
+	/* Hand-drawn outlines draw themselves like a pen stroke. */
+	.sketch-draw path {
+		stroke-dasharray: 1;
+		stroke-dashoffset: 1;
+		animation: draw 0.35s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+		animation-delay: var(--draw-delay, 0.05s);
+	}
+	/* Contact dialog pops in with a tilt. */
+	dialog[open].dialog-pop {
+		animation: dialogIn 0.55s cubic-bezier(0.2, 1.5, 0.4, 1);
+	}
+
+	.sketch-draw path + path {
+		animation-delay: calc(var(--draw-delay, 0.05s) + 0.3s);
+		animation-duration: 0.1s;
+	}
+}
+
+.letter {
+	display: inline-block;
+}
+
+@keyframes letterIn {
 	from {
 		opacity: 0;
-		transform: translateY(4px);
+		transform: translateY(-0.9em) rotate(-30deg) scale(1.8);
+		filter: blur(6px);
 	}
 	to {
 		opacity: 1;
-		transform: translateY(0);
+		transform: none;
+		filter: blur(0);
+	}
+}
+
+@keyframes draw {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+@keyframes dialogIn {
+	from {
+		opacity: 0;
+		transform: scale(0.6) rotate(-6deg);
+		filter: blur(8px);
 	}
 }

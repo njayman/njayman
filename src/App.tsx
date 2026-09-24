@@ -1,12 +1,124 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Avatar from "./components/Avatar";
 import CommandInput from "./components/CommandInput";
 import ContactDialog from "./components/ContactDialog";
 import Navbar from "./components/Navbar";
-import { renderSection, SectionId } from "./sections";
+import PageWipe, { type PageWipeHandle } from "./components/PageWipe";
+import {
+	ALL_SECTIONS,
+	renderSection,
+	SECTION_COLORS,
+	SectionId,
+} from "./sections";
+
+// "" -> home, "#skills" -> skills, anything else (e.g. #main-content skip link) -> ignore.
+function sectionFromHash(): SectionId | null {
+	const h = window.location.hash.slice(1);
+	if (!h) return SectionId.Hero;
+	return ALL_SECTIONS.find((id) => id === h) ?? null;
+}
+
+const reduceMotion = () =>
+	window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Each block of the incoming page flies in with blur, tilt and an overshoot.
+const ENTER: Keyframe[] = [
+	{
+		opacity: 0,
+		transform: "translateY(56px) rotate(-5deg) scale(0.9)",
+		filter: "blur(14px)",
+	},
+	{ opacity: 1, transform: "none", filter: "blur(0)" },
+];
+
+// Top two levels of the page, minus things with their own entrance (letter-split
+// headings, self-drawing card outlines, physics bubbles, avatar pupils).
+function enterTargets(root: Element) {
+	return [
+		...root.querySelectorAll(":scope > * > *, :scope > * > * > *"),
+	].filter(
+		(el) =>
+			!/^(H1|H2|svg)$/i.test(el.tagName) &&
+			!el.parentElement?.closest("[data-no-enter]"),
+	);
+}
 
 export default function App() {
+	// `active` is where the user is headed (drives the nav); `shown` is what's on screen.
 	const [active, setActive] = useState<SectionId>(SectionId.Hero);
+	const [shown, setShown] = useState<SectionId>(SectionId.Hero);
+	const wipe = useRef<PageWipeHandle>(null);
+	const target = useRef<SectionId>(SectionId.Hero);
+	const busy = useRef(false);
+	const pageRef = useRef<HTMLDivElement>(null);
+	const mainRef = useRef<HTMLElement>(null);
+	const firstRender = useRef(true);
+	const shownRef = useRef<SectionId>(SectionId.Hero);
+
+	function show(id: SectionId) {
+		shownRef.current = id;
+		mainRef.current?.scrollTo(0, 0);
+		setShown(id);
+	}
+
+	// Whole transition fits in ~1s: cover 0.4s, reveal 0.4s, entrance overlaps the reveal.
+	async function navigate(id: SectionId) {
+		setActive(id);
+		target.current = id;
+		if (busy.current || id === shownRef.current) return; // a running transition picks up the latest target
+		if (reduceMotion() || !wipe.current) {
+			show(id);
+			return;
+		}
+		busy.current = true;
+		while (target.current !== shownRef.current) {
+			const next = target.current;
+			await wipe.current.cover(SECTION_COLORS[next]);
+			show(next);
+			await wipe.current.reveal();
+		}
+		busy.current = false;
+	}
+
+	// The URL hash is the source of truth: nav links, the command box and back/forward all go through it.
+	// biome-ignore lint/correctness/useExhaustiveDependencies: navigate only touches refs and setters
+	useEffect(() => {
+		const initial = sectionFromHash();
+		// Prerendered HTML is the home page; jump straight to a shared #page after hydrating.
+		if (initial && initial !== SectionId.Hero) {
+			target.current = initial;
+			setActive(initial);
+			show(initial);
+		}
+		const onHash = () => {
+			const id = sectionFromHash();
+			if (id) navigate(id);
+		};
+		window.addEventListener("hashchange", onHash);
+		return () => window.removeEventListener("hashchange", onHash);
+	}, []);
+
+	const go = (id: SectionId) => {
+		window.location.hash = id;
+	};
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: replay the entrance whenever the shown page changes
+	useLayoutEffect(() => {
+		if (firstRender.current) {
+			firstRender.current = false; // prerendered page is already visible, don't hide it
+			return;
+		}
+		const root = pageRef.current;
+		if (!root || reduceMotion()) return;
+		enterTargets(root).forEach((el, i) => {
+			el.animate(ENTER, {
+				duration: 400,
+				delay: 30 + Math.min(i, 12) * 12,
+				easing: "cubic-bezier(0.2, 1.35, 0.4, 1)",
+				fill: "backwards",
+			});
+		});
+	}, [shown]);
 	const [dialogOpen, setDialogOpen] = useState(false);
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -26,11 +138,11 @@ export default function App() {
 		return () => window.removeEventListener("keydown", handleKey);
 	}, []);
 
-	const isHero = active === SectionId.Hero;
+	const isHero = shown === SectionId.Hero;
 	const commandInput = (
 		<CommandInput
 			hero={isHero}
-			onCommand={setActive}
+			onCommand={go}
 			onContact={() => setDialogOpen(true)}
 			onFocusInput={(el) => {
 				inputRef.current = el;
@@ -47,20 +159,20 @@ export default function App() {
 				Skip to content
 			</a>
 
-			<Navbar
-				active={active}
-				onSelect={setActive}
-				onContact={() => setDialogOpen(true)}
-			/>
+			<Navbar active={active} onContact={() => setDialogOpen(true)} />
 
-			<main id="main-content" className="flex-1 scrollable" tabIndex={-1}>
+			<main
+				ref={mainRef}
+				id="main-content"
+				className="flex-1 scrollable"
+				tabIndex={-1}
+			>
 				<div
 					className="min-h-full flex items-center justify-center p-4 sm:p-8 md:p-12"
-					key={active}
-					style={{ animation: "fadeIn 0.15s ease" }}
+					key={shown}
 				>
-					<div className="w-full max-w-3xl">
-						{renderSection(active)}
+					<div ref={pageRef} className="w-full max-w-3xl">
+						{renderSection(shown)}
 						{isHero && commandInput}
 					</div>
 				</div>
@@ -75,6 +187,8 @@ export default function App() {
 					className="fixed bottom-16 left-4 h-24 pointer-events-none hidden lg:pointer-fine:block"
 				/>
 			)}
+
+			<PageWipe ref={wipe} />
 
 			<ContactDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
 		</div>

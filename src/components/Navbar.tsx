@@ -4,15 +4,14 @@ import { ALL_SECTIONS, SECTION_LABELS } from "../sections";
 
 interface NavbarProps {
 	active: SectionId;
-	onSelect: (id: SectionId) => void;
 	onContact: () => void;
 }
 
 const BTN =
-	"text-sm transition-colors px-1 py-2 sm:py-0.5 rounded text-left " +
-	"focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2 ";
+	"text-sm transition-colors px-1 py-2 sm:py-0.5 text-left " +
+	"focus-visible:outline-none focus-visible:underline ";
 
-export default function Navbar({ active, onSelect, onContact }: NavbarProps) {
+export default function Navbar({ active, onContact }: NavbarProps) {
 	const [open, setOpen] = useState(false);
 
 	return (
@@ -34,23 +33,21 @@ export default function Navbar({ active, onSelect, onContact }: NavbarProps) {
 				className={`${open ? "flex" : "hidden"} flex-col mt-2 sm:mt-0 sm:flex sm:flex-row sm:flex-wrap gap-1 sm:gap-2`}
 			>
 				{ALL_SECTIONS.map((id) => (
-					<button
+					// Real links so every page has a shareable URL (#skills etc.); App listens for hashchange.
+					<a
 						key={id}
-						type="button"
-						onClick={() => {
-							onSelect(id);
-							setOpen(false);
-						}}
+						href={`#${id}`}
+						onClick={() => setOpen(false)}
 						aria-current={id === active ? "page" : undefined}
 						className={
 							BTN +
 							(id === active
-								? "text-zinc-100 sm:border-b sm:border-zinc-100"
+								? "text-matte-blue"
 								: "text-zinc-500 hover:text-zinc-300")
 						}
 					>
 						{SECTION_LABELS[id]}
-					</button>
+					</a>
 				))}
 				<span
 					className="hidden sm:inline text-zinc-700 mx-1"

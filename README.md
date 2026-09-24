@@ -31,8 +31,8 @@
 - [**nbkit**](https://nbkit.njayman.com): Convert Jupyter notebooks (.ipynb) to Markdown or plain text, no kernel required. Zero-dependency TypeScript core library, an MCP server for AI agents, and a Next.js web app.
 - [**proz**](https://github.com/njayman/proz): Cross-platform CLI + TUI project launcher built with Go, Bubbletea and Cobra. Fuzzy-find and jump between projects from any terminal.
 - [**Galaxy Impact**](https://github.com/njayman/galaxyimpact): Top-down bullet-heaven space shooter (C++, raylib, CMake): escalating enemy waves, skill-based leveling, shared-move-pool bosses, and a web build via Emscripten.
-- [**noticable**](https://codeberg.org/njayman/noticable): My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintain; NoticeBee is adopted by 100+ govt. colleges under CEDP. Adds an admin dashboard and kiosk display mode, with v2 adding offline/online status, multipart uploads, and layout management.
-- [**medible**](https://codeberg.org/njayman/medible): My fork and rebuild of Medibee, Kernel International's medical student subscription platform (React/Vite/Express monorepo) that I maintain; Medibee has 1,000+ active subscribers.
+- [**noticable**](https://codeberg.org/njayman/noticable): My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintained; NoticeBee is adopted by 100+ govt. colleges under CEDP. Adds an admin dashboard and kiosk display mode, with v2 adding offline/online status, multipart uploads, and layout management.
+- [**medible**](https://codeberg.org/njayman/medible): My fork and rebuild of Medibee, Kernel International's medical student subscription platform (React/Vite/Express monorepo) that I maintained; Medibee has 1,000+ active subscribers.
 - [**brain.md Skills**](https://github.com/njayman/brainmd-skills): Agent Skill/MCP plugin that teaches AI coding agents (Claude Code, Cursor, VS Code Copilot) to connect to and use brain.md, a local-first Markdown knowledge vault: auth, search, and note read/write across 16+ tools.
 
 ---

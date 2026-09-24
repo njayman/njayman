@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import ExpCard from "./ExpCard";
 
 interface ContactDialogProps {
 	open: boolean;
@@ -24,27 +25,33 @@ export default function ContactDialog({ open, onClose }: ContactDialogProps) {
 		<dialog
 			ref={ref}
 			onClose={onClose}
-			className="bg-zinc-900 text-zinc-100 rounded-xl border border-zinc-800 p-6 shadow-2xl shadow-black/50 backdrop:bg-black/60 max-w-sm mx-auto open:flex open:flex-col open:gap-4"
+			className="dialog-pop m-auto bg-transparent text-zinc-100 p-0 max-w-sm w-[calc(100%-2rem)] overflow-visible backdrop:bg-black/70"
 		>
-			<p className="text-sm leading-relaxed">
-				Send an email to <strong>najishmahmud@gmail.com</strong>?
-			</p>
-			<div className="flex gap-3 justify-end">
-				<button
-					type="button"
-					onClick={onClose}
-					className="px-4 py-1.5 text-sm rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500"
-				>
-					Cancel
-				</button>
-				<button
-					type="button"
-					onClick={send}
-					className="px-4 py-1.5 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-500 transition-colors focus-visible:outline-2 focus-visible:outline-blue-400"
-				>
-					Send
-				</button>
-			</div>
+			<ExpCard
+				color="text-matte-blue"
+				className="p-6 rounded-2xl bg-zinc-950 flex flex-col gap-5"
+			>
+				<p className="text-sm leading-relaxed text-center">
+					Send an email to{" "}
+					<strong className="text-matte-blue">najishmahmud@gmail.com</strong>?
+				</p>
+				<div className="flex gap-6 justify-center text-sm">
+					<button
+						type="button"
+						onClick={onClose}
+						className="text-zinc-400 hover:text-zinc-100 focus-visible:text-zinc-100 focus-visible:underline focus-visible:outline-none transition-colors"
+					>
+						Cancel
+					</button>
+					<button
+						type="button"
+						onClick={send}
+						className="text-matte-blue hover:text-zinc-100 focus-visible:text-zinc-100 focus-visible:underline focus-visible:outline-none transition-colors font-medium"
+					>
+						Send
+					</button>
+				</div>
+			</ExpCard>
 		</dialog>
 	);
 }

@@ -48,7 +48,7 @@ export default function Avatar({
 	}, []);
 
 	return (
-		<div ref={boxRef} className={`w-fit ${className}`}>
+		<div ref={boxRef} data-no-enter className={`w-fit ${className}`}>
 			<img
 				src="/avatar.png"
 				alt={alt}
