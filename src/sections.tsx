@@ -79,6 +79,13 @@ export function renderSection(id: SectionId): ReactNode {
 		case SectionId.Hero:
 			return (
 				<header className="text-center py-12">
+					<img
+						src="/avatar.png"
+						alt={`Cartoon avatar of ${NAME}`}
+						width={445}
+						height={680}
+						className="h-40 w-auto mx-auto mb-6 drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]"
+					/>
 					<h1 className="text-4xl font-bold tracking-tight">{NAME}</h1>
 					<p className="text-zinc-500 mt-2 text-lg">{TITLE}</p>
 					<div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm text-zinc-600">
