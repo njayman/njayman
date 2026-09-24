@@ -3,6 +3,7 @@ import { PROJECTS } from "../src/data/profile";
 
 const SKILL_CATEGORIES: Record<string, string[]> = {
 	Languages: ["TypeScript", "JavaScript", "Python", "Go"],
+	"AI / ML": ["PyTorch", "RL (PPO)", "Hugging Face", "LangChain", "MCP"],
 	Frontend: [
 		"React",
 		"Next.js",
@@ -10,8 +11,8 @@ const SKILL_CATEGORIES: Record<string, string[]> = {
 		"Socket.io",
 		"Framer Motion",
 	],
-	Backend: ["NestJS", "Node.js", "Express", "Go", "FastAPI", "Django", "PayloadCMS"],
-	Databases: ["PostgreSQL", "Redis", "BullMQ"],
+	Backend: ["NestJS", "Node.js", "Bun", "Hono", "Express", "Go", "FastAPI", "Django", "PayloadCMS", "BullMQ"],
+	Databases: ["PostgreSQL", "MongoDB", "Redis"],
 	DevOps: ["Docker", "Linux", "Nginx", "CI/CD", "Coolify"],
 	Cloud: ["AWS"],
 	Testing: ["Jest", "React Testing Library"],

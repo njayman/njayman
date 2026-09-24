@@ -11,22 +11,26 @@ interface CommandInputProps {
 	onCommand: (id: SectionId) => void;
 	onContact: () => void;
 	onFocusInput: (el: HTMLInputElement) => void;
+	hero?: boolean;
 }
 
 export default function CommandInput({
 	onCommand,
 	onContact,
 	onFocusInput,
+	hero = false,
 }: CommandInputProps) {
 	const [inputVal, setInputVal] = useState("");
 	const [highlighted, setHighlighted] = useState(0);
 	const ref = useRef<HTMLInputElement>(null);
 
-	const filtered = inputVal.trim()
-		? SUGGESTIONS.filter((s) => s.value.includes(inputVal.trim().toLowerCase()))
-		: SUGGESTIONS;
+	const q = inputVal.trim().toLowerCase();
+	const matches = SUGGESTIONS.filter(
+		(s) => s.value.includes(q) || s.label.toLowerCase().includes(q),
+	);
+	const filtered = matches.length > 0 ? matches : SUGGESTIONS;
 
-	const show = filtered.length > 0 && inputVal.length > 0;
+	const show = inputVal.length > 0;
 
 	function select(val: string) {
 		setInputVal("");
@@ -65,7 +69,11 @@ export default function CommandInput({
 		<search>
 			<form
 				onSubmit={handleSubmit}
-				className="border-t border-zinc-800 p-3 relative"
+				className={
+					hero
+						? "relative w-full max-w-xl mx-auto border border-zinc-700 rounded-full px-5 py-3 bg-zinc-900 focus-within:border-zinc-500"
+						: "border-t border-zinc-800 p-3 relative"
+				}
 			>
 				<label htmlFor="command-input" className="sr-only">
 					Jump to a section
@@ -77,7 +85,7 @@ export default function CommandInput({
 						if (el) onFocusInput(el);
 					}}
 					type="text"
-					placeholder="Type a section name or 'contact'..."
+					placeholder="What do you want to know?"
 					value={inputVal}
 					onChange={(e) => {
 						setInputVal(e.target.value);
@@ -91,7 +99,12 @@ export default function CommandInput({
 					className="w-full bg-transparent text-zinc-100 placeholder-zinc-600 outline-none"
 				/>
 				{show && (
-					<ul className="absolute bottom-full left-0 right-0 mb-1 bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden shadow-xl shadow-black/40">
+					<ul
+						className={
+							(hero ? "top-full mt-2 text-left z-10 " : "bottom-full mb-1 ") +
+							"absolute left-0 right-0 bg-zinc-900 border border-zinc-800 rounded-lg overflow-hidden shadow-xl shadow-black/40"
+						}
+					>
 						{filtered.map((s, i) => (
 							<li
 								key={s.value}

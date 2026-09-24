@@ -15,9 +15,10 @@
 | Category | Technologies |
 |----------|-------------|
 | **Languages** | TypeScript, JavaScript, Python, Go |
+| **AI / ML** | PyTorch, RL (PPO), Hugging Face, LangChain, MCP |
 | **Frontend** | React, Next.js, Tailwind CSS, Socket.io, Framer Motion |
-| **Backend** | NestJS, Node.js, Express, Go, FastAPI, Django, PayloadCMS |
-| **Databases** | PostgreSQL, Redis, BullMQ |
+| **Backend** | NestJS, Node.js, Bun, Hono, Express, Go, FastAPI, Django, PayloadCMS, BullMQ |
+| **Databases** | PostgreSQL, MongoDB, Redis |
 | **DevOps** | Docker, Linux, Nginx, CI/CD, Coolify |
 | **Cloud** | AWS |
 | **Testing** | Jest, React Testing Library |
@@ -26,7 +27,7 @@
 
 ## 📌 Featured Projects
 
-- [**orcchh**](https://codeberg.org/njayman/orcchh): Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines, cutting SLA violations 3.1x under bursty traffic.
+- [**orcchh**](https://codeberg.org/njayman/orcchh): Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines.
 - [**nbkit**](https://nbkit.njayman.com): Convert Jupyter notebooks (.ipynb) to Markdown or plain text, no kernel required. Zero-dependency TypeScript core library, an MCP server for AI agents, and a Next.js web app.
 - [**proz**](https://github.com/njayman/proz): Cross-platform CLI + TUI project launcher built with Go, Bubbletea and Cobra. Fuzzy-find and jump between projects from any terminal.
 - [**Galaxy Impact**](https://github.com/njayman/galaxyimpact): Top-down bullet-heaven space shooter (C++, raylib, CMake): escalating enemy waves, skill-based leveling, shared-move-pool bosses, and a web build via Emscripten.

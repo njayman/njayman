@@ -27,7 +27,7 @@ export const SectionId = {
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
 
 export const SECTION_LABELS: Record<SectionId, string> = {
-	[SectionId.Hero]: "Hero",
+	[SectionId.Hero]: "Home",
 	[SectionId.About]: "About",
 	[SectionId.Skills]: "Skills",
 	[SectionId.Experience]: "Experience",
@@ -52,7 +52,7 @@ function SectionHeading({ children }: { children: string }) {
 export function getSectionText(id: SectionId): string {
 	switch (id) {
 		case SectionId.Hero:
-			return `${NAME} — ${TITLE}. Portfolio at njayman.com. GitHub at github.com/njayman. LinkedIn at linkedin.com/in/najishmahmud.`;
+			return `${NAME} — ${TITLE}. Portfolio at njayman.com. GitHub at github.com/njayman. Codeberg at codeberg.org/njayman. LinkedIn at linkedin.com/in/najishmahmud.`;
 		case SectionId.About:
 			return ABOUT_LONG;
 		case SectionId.Skills:
@@ -81,7 +81,7 @@ export function renderSection(id: SectionId): ReactNode {
 				<header className="text-center py-12">
 					<h1 className="text-4xl font-bold tracking-tight">{NAME}</h1>
 					<p className="text-zinc-500 mt-2 text-lg">{TITLE}</p>
-					<div className="flex justify-center gap-6 mt-6 text-sm text-zinc-600">
+					<div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm text-zinc-600">
 						{HERO_LINKS.map((link) => (
 							<a
 								key={link.href}
@@ -95,6 +95,13 @@ export function renderSection(id: SectionId): ReactNode {
 							</a>
 						))}
 					</div>
+					<a
+						href="/Najish-Mahmud-CV.pdf"
+						download
+						className="inline-block mt-6 px-4 py-2 text-sm rounded border border-zinc-700 text-zinc-300 hover:border-blue-400 hover:text-blue-400 transition-colors focus-visible:outline-2 focus-visible:outline-blue-500 focus-visible:outline-offset-2"
+					>
+						Download CV (PDF)
+					</a>
 				</header>
 			);
 		case SectionId.About:

@@ -43,6 +43,10 @@ export const SKILL_CATEGORIES: Record<string, SkillCategory> = {
 		color: "bg-blue-600/20 text-blue-300 border-blue-700/30",
 		skills: ["TypeScript", "JavaScript", "Python", "Go"],
 	},
+	"AI / ML": {
+		color: "bg-indigo-600/20 text-indigo-300 border-indigo-700/30",
+		skills: ["PyTorch", "RL (PPO)", "Hugging Face", "LangChain", "MCP"],
+	},
 	Frontend: {
 		color: "bg-teal-600/20 text-teal-300 border-teal-700/30",
 		skills: [
@@ -64,16 +68,19 @@ export const SKILL_CATEGORIES: Record<string, SkillCategory> = {
 		skills: [
 			"NestJS",
 			"Node.js",
+			"Bun",
+			"Hono",
 			"Express",
 			"Go",
 			"FastAPI",
 			"Django",
 			"PayloadCMS",
+			"BullMQ",
 		],
 	},
 	Databases: {
 		color: "bg-amber-600/20 text-amber-300 border-amber-700/30",
-		skills: ["PostgreSQL", "Redis", "BullMQ", "Linode OSS"],
+		skills: ["PostgreSQL", "MongoDB", "Redis", "Linode OSS"],
 	},
 	DevOps: {
 		color: "bg-rose-600/20 text-rose-300 border-rose-700/30",
@@ -119,10 +126,9 @@ export const EXPERIENCES: Experience[] = [
 		role: "Software Engineer",
 		dates: "Jun 2023 – Aug 2025",
 		bullets: [
-			"Led ground-up development of an internal React + TypeScript UI component library as first React hire — DateTimePicker, Data Table, Localization Context with Storybook docs and unit tests; library powers the UI overhaul of electronic health records used across 26 US states.",
+			"Led ground-up development of an internal React + TypeScript UI component library as first React hire — DateTimePicker, Data Table, Localization Context with Storybook docs and unit tests (Jest, React Testing Library); library powers the UI overhaul of electronic health records used across 26 US states.",
 			"Developed QA Assistant notification system — real-time form rejection alerts surfaced via a floating Web Component embedding React, enabling reuse of the internal component library within legacy JSP pages; owned end to end.",
 			"Built web components integrating legacy jQuery/JSP widgets with React, bridging old and new frontend architectures.",
-			"Used Claude AI for debugging, code generation, and navigating unfamiliar areas of the codebase; wrote unit tests with Jest and React Testing Library for the component library.",
 			"Mentored new recruits on React/TypeScript patterns and component architecture.",
 		],
 	},
@@ -154,7 +160,7 @@ export const PROJECTS: Project[] = [
 	{
 		name: "orcchh",
 		description:
-			"Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines, cutting SLA violations 3.1x under bursty traffic.",
+			"Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines.",
 		url: "https://codeberg.org/njayman/orcchh",
 	},
 	{
@@ -200,7 +206,7 @@ export const EDUCATION: Education[] = [
 		institution: "University of Bedfordshire",
 		location: "Luton, UK",
 		degree: "MSc in Artificial Intelligence",
-		dates: "September 2025 – Present",
+		dates: "Sep 2025 – Sep 2026",
 	},
 	{
 		institution: "Islamic University of Technology",
@@ -224,6 +230,11 @@ export const HERO_LINKS = [
 		href: "https://github.com/njayman",
 		label: "github.com/njayman",
 		name: "GitHub profile",
+	},
+	{
+		href: "https://codeberg.org/njayman",
+		label: "codeberg.org/njayman",
+		name: "Codeberg profile",
 	},
 	{
 		href: "https://www.linkedin.com/in/najishmahmud/",

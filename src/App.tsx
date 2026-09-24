@@ -25,6 +25,18 @@ export default function App() {
 		return () => window.removeEventListener("keydown", handleKey);
 	}, []);
 
+	const isHero = active === SectionId.Hero;
+	const commandInput = (
+		<CommandInput
+			hero={isHero}
+			onCommand={setActive}
+			onContact={() => setDialogOpen(true)}
+			onFocusInput={(el) => {
+				inputRef.current = el;
+			}}
+		/>
+	);
+
 	return (
 		<div className="flex flex-col h-screen bg-zinc-950 text-zinc-100">
 			<a
@@ -46,17 +58,14 @@ export default function App() {
 					key={active}
 					style={{ animation: "fadeIn 0.15s ease" }}
 				>
-					<div className="w-full max-w-3xl">{renderSection(active)}</div>
+					<div className="w-full max-w-3xl">
+						{renderSection(active)}
+						{isHero && commandInput}
+					</div>
 				</div>
 			</main>
 
-			<CommandInput
-				onCommand={setActive}
-				onContact={() => setDialogOpen(true)}
-				onFocusInput={(el) => {
-					inputRef.current = el;
-				}}
-			/>
+			{!isHero && commandInput}
 
 			<ContactDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
 		</div>
