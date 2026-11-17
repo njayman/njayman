@@ -36,7 +36,7 @@ export const SUMMARY =
 	"Full-stack engineer with 4+ years building React/TypeScript web applications, including real-time data platforms using Socket.io and WebSocket state management. Self-taught in Go — built CLI tools and game projects independently. Experience with financial transaction flows through open banking integration and payment reconciliation. Comfortable owning features end to end in fast-moving, process-forming environments.";
 
 export const ABOUT_LONG =
-	"Full-stack TypeScript engineer with 4+ years building production web applications across React, Next.js, Express, NestJS and TypeScript. Experienced in delivering end-to-end features including AI inference visualization, open banking integrations, and complex UI systems. Currently completing an MSc in Artificial Intelligence at the University of Bedfordshire.";
+	"Full-stack TypeScript engineer with 4+ years building production web applications across React, Next.js, Express, NestJS and TypeScript. Experienced in delivering end-to-end features including AI inference visualization, open banking integrations, and complex UI systems. Holds an MSc in Artificial Intelligence (Distinction) from the University of Bedfordshire.";
 
 export const SKILL_CATEGORIES: Record<string, SkillCategory> = {
 	Languages: {
@@ -89,10 +89,6 @@ export const SKILL_CATEGORIES: Record<string, SkillCategory> = {
 		color: "text-matte-emerald",
 		skills: ["Jest", "React Testing Library"],
 	},
-	Cloud: {
-		color: "text-matte-sky",
-		skills: ["AWS"],
-	},
 	Other: {
 		color: "text-matte-pink",
 		skills: [
@@ -113,10 +109,11 @@ export const EXPERIENCES: Experience[] = [
 		role: "Fullstack TypeScript Developer",
 		dates: "Nov 2025 – May 2026",
 		bullets: [
-			"Implemented Atto open banking integration end-to-end: reverse-engineered OAuth consent flow from incomplete API docs, built bank account linking modal and transaction sync pipeline for automated rent reconciliation.",
-			"Delivered Finance page from scratch: rent charge management, transaction uploads, and reconciliation UI visualizing AI-generated payment-matching suggestions with confidence scores.",
-			"Built full-stack features across a Next.js/NestJS property management platform: controllers, services, and APIs for properties, finance, and document modules.",
-			"Revamped dynamic form builder to support 30+ AI-extracted house rental document types; built hierarchical property-unit selector for multi-unit management.",
+			"Built property and unit onboarding for Alor Pro, a portfolio management platform for UK landlords: dynamic property creation covering units, tenants, rent and contracts, plus a hierarchical property-unit selector.",
+			"Built document extraction handling: tenancy document upload that pre-fills onboarding forms, with the form builder extended to 30+ rental document types; developed against stubbed AI services on a redacted codebase.",
+			"Delivered the Finance page from scratch: rent charges, transaction uploads, and a reconciliation UI showing payment-matching suggestions with confidence scores.",
+			"Implemented Atto open banking integration end-to-end: reverse-engineered OAuth consent flow from incomplete API docs, built bank account linking and a transaction sync pipeline for automated rent reconciliation.",
+			"Built NestJS controllers, services, and APIs for the properties, finance, and document modules.",
 		],
 	},
 	{
@@ -125,20 +122,20 @@ export const EXPERIENCES: Experience[] = [
 		role: "Software Engineer",
 		dates: "Jun 2023 – Aug 2025",
 		bullets: [
-			"Led ground-up development of an internal React + TypeScript UI component library as first React hire: DateTimePicker, Data Table, Localization Context with Storybook docs and unit tests (Jest, React Testing Library); library powers the UI overhaul of electronic health records used across 26 US states.",
+			"Led ground-up development of an internal React + TypeScript UI component library as first React hire: DateTimePicker, Data Table, Localization Context with Storybook docs and unit tests (Jest, React Testing Library); library powers the UI overhaul of electronic health records used across 20+ US states.",
 			"Developed QA Assistant notification system: real-time form rejection alerts surfaced via a floating Web Component embedding React, enabling reuse of the internal component library within legacy JSP pages; owned end to end.",
 			"Built web components integrating legacy jQuery/JSP widgets with React, bridging old and new frontend architectures.",
-			"Mentored new recruits on React/TypeScript patterns and component architecture.",
+			"Trained three new React hires through to permanent roles.",
 		],
 	},
 	{
 		company: "Kernel International Ltd.",
 		location: "Dhaka, Bangladesh",
-		role: "Fullstack Developer (Freelance)",
-		dates: "Jan 2022 – Jul 2026",
+		role: "Fullstack Developer (Intern, then Freelance)",
+		dates: "Dec 2019 – Jul 2026",
 		bullets: [
 			"Built Jacks Burger (UK) admin panel with Next.js + PayloadCMS: customer management, coupons, table management, and branch-level inventory reporting.",
-			"Configured Jitsi WebRTC video infrastructure for Medibee's early platform, supporting live sessions for 20–30 concurrent users.",
+			"Configured Jitsi WebRTC video infrastructure for Medibee's early platform, load-tested with 30 concurrent users.",
 			"Managed client relationships end-to-end via Fiverr: gathered requirements, scoped solutions, and iterated to delivery across multiple projects.",
 			"Maintained Medibee and NoticeBee post-launch: CI/CD via Coolify, deployments, and feature updates.",
 		],
@@ -183,7 +180,7 @@ export const PROJECTS: Project[] = [
 	{
 		name: "noticable",
 		description:
-			"My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintained; NoticeBee is adopted by 100+ govt. colleges under CEDP. Adds an admin dashboard and kiosk display mode, with v2 adding offline/online status, multipart uploads, and layout management.",
+			"My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintained; NoticeBee is adopted by 100+ govt. colleges under CEDP. Noticable is a multi-tenant digital signage platform: Bun/Hono API with PostgreSQL (Drizzle) and WebSockets, a React dashboard, and Android TV (Expo) and Windows/Linux (Electron) kiosk players that keep playing offline. Adds layouts and rotating scenes, recurring schedules across time zones, group permissions with request/approval workflows, and a built-in AI assistant plus MCP endpoint.",
 		url: "https://codeberg.org/njayman/noticable",
 	},
 	{
@@ -204,7 +201,7 @@ export const EDUCATION: Education[] = [
 	{
 		institution: "University of Bedfordshire",
 		location: "Luton, UK",
-		degree: "MSc in Artificial Intelligence",
+		degree: "MSc in Artificial Intelligence (Distinction)",
 		dates: "Sep 2025 – Sep 2026",
 	},
 	{
