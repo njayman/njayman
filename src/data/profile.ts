@@ -15,6 +15,7 @@ export interface Project {
 	name: string;
 	description: string;
 	url?: string;
+	live?: boolean;
 }
 
 export interface Education {
@@ -30,10 +31,7 @@ export interface ResearchEntry {
 }
 
 export const NAME = "Najish Mahmud";
-export const TITLE = "Full Stack Engineer";
-
-export const SUMMARY =
-	"Full-stack engineer with 4+ years building React/TypeScript web applications, including real-time data platforms using Socket.io and WebSocket state management. Self-taught in Go — built CLI tools and game projects independently. Experience with financial transaction flows through open banking integration and payment reconciliation. Comfortable owning features end to end in fast-moving, process-forming environments.";
+export const TITLE = "Full Stack & AI Engineer";
 
 export const ABOUT_LONG =
 	"Full-stack TypeScript engineer with 4+ years building production web applications across React, Next.js, Express, NestJS and TypeScript. Experienced in delivering end-to-end features including AI inference visualization, open banking integrations, and complex UI systems. Holds an MSc in Artificial Intelligence (Distinction) from the University of Bedfordshire.";
@@ -154,6 +152,13 @@ export const EXPERIENCES: Experience[] = [
 
 export const PROJECTS: Project[] = [
 	{
+		name: "noticable",
+		description:
+			"My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintained; NoticeBee is adopted by 100+ govt. colleges under CEDP. Noticable is a multi-tenant digital signage platform: Bun/Hono API with PostgreSQL (Drizzle) and WebSockets, a React dashboard, and Android TV (Expo) and Windows/Linux (Electron) kiosk players that keep playing offline. Adds layouts and rotating scenes, recurring schedules across time zones, group permissions with request/approval workflows, and a built-in AI assistant plus MCP endpoint.",
+		url: "https://noticable.njayman.com",
+		live: true,
+	},
+	{
 		name: "orcchh",
 		description:
 			"Agentic inference routing across N configurable compute tiers (Python, PyTorch). From-scratch PPO policy with invalid-action masking, self-reporting device agents with calibration classifiers, and an OOD/entropy fallback; deployable as Docker/k8s services. Evaluated with real DistilBERT/BERT-large inference against 8 literature baselines.",
@@ -164,6 +169,7 @@ export const PROJECTS: Project[] = [
 		description:
 			"Convert Jupyter notebooks (.ipynb) to Markdown or plain text, no kernel required. Zero-dependency TypeScript core library, an MCP server for AI agents, and a Next.js web app.",
 		url: "https://nbkit.njayman.com",
+		live: true,
 	},
 	{
 		name: "proz",
@@ -178,10 +184,10 @@ export const PROJECTS: Project[] = [
 		url: "https://github.com/njayman/galaxyimpact",
 	},
 	{
-		name: "noticable",
+		name: "ShopListerr",
 		description:
-			"My fork and rebuild of NoticeBee, Kernel International's realtime notice platform (Socket.io, React) that I maintained; NoticeBee is adopted by 100+ govt. colleges under CEDP. Noticable is a multi-tenant digital signage platform: Bun/Hono API with PostgreSQL (Drizzle) and WebSockets, a React dashboard, and Android TV (Expo) and Windows/Linux (Electron) kiosk players that keep playing offline. Adds layouts and rotating scenes, recurring schedules across time zones, group permissions with request/approval workflows, and a built-in AI assistant plus MCP endpoint.",
-		url: "https://codeberg.org/njayman/noticable",
+			"Expo app (Android, iOS, web) that scans grocery receipts with AI into a searchable on-device SQLite inventory, compares shelf prices against purchase history and answers spending questions. Bring your own key (Anthropic, Gemini, any OpenAI-compatible endpoint) or use credits through a Hono server with better-auth, a Postgres credit ledger and Google Play billing.",
+		url: "https://codeberg.org/njayman/shoplisterr",
 	},
 	{
 		name: "medible",

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>404 | njayman.com</title>
+    <meta name="description" content="Page not found. Probably for very good reasons." />
+    <style>
+      /* Avatar holding a map: map flips upside down and back, head tilts, "?" pops */
+      .lost {
+        position: relative;
+        width: 140px;
+        height: 214px;
+        margin: 0 auto 1rem;
+        animation: tilt 6s ease-in-out infinite;
+        transform-origin: 50% 90%;
+      }
+      .lost img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .map {
+        position: absolute;
+        left: 14%;
+        bottom: 3%;
+        width: 72%;
+        animation: flip 6s ease-in-out infinite;
+      }
+      .huh {
+        position: absolute;
+        top: -6px;
+        right: -18px;
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #85c4bb;
+        opacity: 0;
+        animation: huh 6s ease-in-out infinite;
+      }
+      /* pupils sit in the blank glasses lenses of avatar.png (lens centres measured on the 445x680 source) */
+      .eye {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        margin: -5px 0 0 -5px;
+        border-radius: 50%;
+        background: #18181b;
+        animation: look 6s ease-in-out infinite;
+      }
+      .eye.l { left: 35.5%; top: 47%; }
+      .eye.r { left: 64%; top: 46.8%; }
+      @keyframes look {
+        0%, 16% { transform: translate(0, 7px); }        /* reading the upside-down map */
+        22%, 36% { transform: translate(6px, -6px); }    /* glance up at the "?" */
+        44% { transform: translate(-6px, 6px); }         /* scan the map, right way up */
+        56% { transform: translate(6px, 6px); }
+        64%, 78% { transform: translate(0, 0); }         /* look at the visitor */
+        86%, 100% { transform: translate(0, 7px); }
+      }
+      @keyframes flip {
+        0%, 30% { transform: rotate(180deg); }
+        42%, 75% { transform: rotate(0deg); }
+        87%, 100% { transform: rotate(180deg); }
+      }
+      @keyframes tilt {
+        0%, 20%, 100% { transform: rotate(0deg); }
+        26%, 36% { transform: rotate(-7deg); }
+        48%, 70% { transform: rotate(5deg); }
+      }
+      @keyframes huh {
+        0%, 18%, 40%, 100% { opacity: 0; transform: translateY(6px); }
+        24%, 34% { opacity: 1; transform: translateY(0); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .lost, .map, .huh, .eye { animation: none; }
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #09090b;
+        color: #e4e4e7;
+        font-family: system-ui, -apple-system, sans-serif;
+        text-align: center;
+      }
+      main {
+        padding: 2rem;
+      }
+      h1 {
+        margin: 0;
+        font-size: 6rem;
+        font-weight: 700;
+        color: #85c4bb;
+      }
+      p {
+        color: #a1a1aa;
+        max-width: 28rem;
+        margin: 0.75rem auto;
+      }
+      a {
+        color: #85c4bb;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        color: #f4f4f5;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="lost" role="img" aria-label="Najish's avatar, confused, turning a map the right way up">
+        <img src="/avatar.png" alt="" width="140" height="214" />
+        <span class="eye l" aria-hidden="true"></span>
+        <span class="eye r" aria-hidden="true"></span>
+        <svg class="map" viewBox="0 0 120 80" aria-hidden="true">
+          <path d="M2 6 L40 2 L80 6 L118 2 L118 74 L80 78 L40 74 L2 78 Z" fill="#f3e3bf" stroke="#8a6d3b" stroke-width="2" />
+          <path d="M40 2 V74 M80 6 V78" stroke="#c9b083" stroke-width="1.5" />
+          <path d="M14 62 C 30 40, 52 66, 64 40 S 92 22, 100 18" fill="none" stroke="#8a6d3b" stroke-width="2.5" stroke-dasharray="5 4" />
+          <path d="M94 12 L106 24 M106 12 L94 24" stroke="#d14b4b" stroke-width="4" stroke-linecap="round" />
+          <path d="M20 28 L20 12 L16 18 M20 12 L24 18" fill="none" stroke="#8a6d3b" stroke-width="2" stroke-linecap="round" />
+          <text x="17" y="36" font-size="9" font-family="system-ui" fill="#8a6d3b">N</text>
+        </svg>
+        <span class="huh" aria-hidden="true">?</span>
+      </div>
+      <h1>404</h1>
+      <p>
+        According to my map, this page is... somewhere in Milton Keynes.
+      </p>
+      <p>
+        Hang on, I was holding it upside down. It is still not here.
+      </p>
+      <p>
+        <a href="/">Take me back home</a>
+      </p>
+    </main>
+  </body>
+</html>

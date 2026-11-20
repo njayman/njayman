@@ -191,6 +191,9 @@ export function renderSection(id: SectionId): ReactNode {
 						<Letters text={NAME} delay={50} />
 					</h1>
 					<p className="text-matte-blue mt-2 text-lg">{TITLE}</p>
+					<p className="mt-3 text-sm text-matte-emerald">
+						Currently available for Full Stack and AI engineering roles
+					</p>
 					<p className="text-zinc-400 mt-4 max-w-2xl mx-auto leading-relaxed">
 						{ABOUT_LONG}
 					</p>
@@ -266,6 +269,11 @@ export function renderSection(id: SectionId): ReactNode {
 										</a>
 									) : (
 										p.name
+									)}
+									{p.live && (
+										<span className="ml-2 inline-block align-middle rounded border border-matte-emerald/40 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-matte-emerald">
+											Live
+										</span>
 									)}
 								</h3>
 								<p className="text-zinc-400 text-sm mt-1">{p.description}</p>
