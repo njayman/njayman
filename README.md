@@ -20,7 +20,7 @@
 | **Backend** | NestJS, Node.js, Bun, Hono, Express, Go, FastAPI, Django, PayloadCMS, BullMQ |
 | **Databases** | PostgreSQL, MongoDB, Redis |
 | **DevOps** | Docker, Linux, Nginx, CI/CD, Coolify |
-| **Cloud** | AWS |
+| **Cloud** | AWS | Linode
 | **Testing** | Jest, React Testing Library |
 
 ---
