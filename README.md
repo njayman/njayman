@@ -47,6 +47,7 @@
   <br>
 
   <img src="./profile/stats.svg" alt="GitHub Stats" />
+    <div></div>
 
 </div>
 
